@@ -23,6 +23,11 @@ var game = {
         function start() {
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
+            var random_jewel_array = [1,2,3,4,5,6,7,8,9]
+            $("#jewel-1").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
+            $("#jewel-2").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
+            $("#jewel-3").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
+            $("#jewel-4").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
             $("#random-number").html(this.random_number);
             $("#win-counter").html(0);
             $("#loss-counter").html(0);
@@ -33,8 +38,13 @@ var game = {
         function restart() {
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
+            var random_jewel_array = [1,2,3,4,5,6,7,8,9]
             $("#random-number").html(this.random_number);
             $("#total-score").html(0);
+            $("#jewel-1").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
+            $("#jewel-2").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
+            $("#jewel-3").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
+            $("#jewel-4").attr("value", random_jewel_array[Math.floor(Math.random() * random_jewel_array.length)])
         },  
 }
 
