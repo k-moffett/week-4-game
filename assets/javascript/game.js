@@ -23,7 +23,14 @@ var game = {
     flag_2: 0,
     start: 
         function start() {
-
+            $("#win-counter").html(0);
+            $("#loss-counter").html(0);
+            $("#total-score").html(0);
+            $("#random-number").html("");
+            $("#jewel-1").html("");
+            $("#jewel-2").html("");
+            $("#jewel-3").html("");
+            $("#jewel-4").html("");
         },
     restart:
         function restart() {
@@ -41,5 +48,5 @@ var game = {
 
 
 
-
+game.start()
       });
