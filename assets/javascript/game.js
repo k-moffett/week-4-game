@@ -22,14 +22,16 @@ var game = {
     start: 
         function start() {
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
-            this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
             var random_gem_array = [1,2,3,4,5,6,7,8,9]
-            $("#total-score").html(0);
+            this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
+            
+            
             $("#gem-1").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-2").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-3").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-4").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#random-number").html(this.random_number);
+            $("#total-score").html(0);
             $("#win-counter").html(0);
             $("#loss-counter").html(0);
             $("#total-score").html(0);
@@ -71,6 +73,7 @@ function lose() {
 
 $(".gems").on("click", function get_jewel_values() {
     console.log("working")
+    console.log(document.getElementById("gem-1"))
 })
 game.start()
       });
