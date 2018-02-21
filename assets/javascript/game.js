@@ -71,9 +71,21 @@ function lose() {
 
 
 
-$(".gems").on("click", function get_jewel_values() {
-    console.log("working")
-    console.log(document.getElementById("gem-1"))
+$("#gem-1").on("click", function get_jewel_values() {
+    var value = $("#gem-1").attr("value")
+    console.log(value)
+})
+$("#gem-2").on("click", function get_jewel_values() {
+    var value = $("#gem-2").attr("value")
+    console.log(value)
+})
+$("#gem-3").on("click", function get_jewel_values() {
+    var value = $("#gem-3").attr("value")
+    console.log(value)
+})
+$("#gem-4").on("click", function get_jewel_values() {
+    var value = $("#gem-4").attr("value")
+    console.log(value)
 })
 game.start()
       });
