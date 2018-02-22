@@ -30,11 +30,12 @@ var game = {
         },
     restart:
         function restart() {
+            console.log("restart was called")
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
             var random_gem_array = [1,2,3,4,5,6,7,8,9]
-            $("#random-number").html(this.random_number);
             $("#total-score").html(0);
+            $("#random-number").html(this.random_number);
             $("#gem-1").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-2").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-3").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
@@ -46,9 +47,24 @@ function add_jewel_values(value) {
 var old_value = $("#total-score").html()
 $("#total-score").html((value*1)+(old_value*1))
 var new_value = $("#total-score").html()
-compare_values(new_value)
+lose(new_value)
 }
-function compare_values(new_value) {
+
+function lose(new_value){
+    console.log(new_value, "new value")
+    var random_number = $("#random-number").html()
+    var losses = $("#loss-counter").html()
+    console.log(random_number, "random")
+    console.log(losses, "losses")
+    if (new_value > random_number){
+        $("#loss-counter").html((losses*1)+1)
+        game.restart()
+    } else {
+        win(new_value)
+    }
+}
+
+function win(new_value) {
 var random_number = $("#random-number").html()
 var wins =  $("#win-counter").html()
 if (new_value === random_number) {
