@@ -11,21 +11,11 @@
 $( document ).ready(function () {
     
 var game = {
-    random_number: "",
-    total_score: "",
-    gem_1: "",
-    gem_2: "",
-    gem_3: "",
-    gem_4: "",
-    flag: 0,
-    flag_2: 0,
     start: 
         function start() {
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             var random_gem_array = [1,2,3,4,5,6,7,8,9]
             this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
-            
-            
             $("#gem-1").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-2").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-3").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
@@ -42,7 +32,7 @@ var game = {
         function restart() {
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
-            var random_jewel_array = [1,2,3,4,5,6,7,8,9]
+            var random_gem_array = [1,2,3,4,5,6,7,8,9]
             $("#random-number").html(this.random_number);
             $("#total-score").html(0);
             $("#gem-1").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
@@ -52,40 +42,37 @@ var game = {
         },  
 }
 
-function add_jewel_values() {
-
+function add_jewel_values(value) {
+var old_value = $("#total-score").html()
+$("#total-score").html((value*1)+(old_value*1))
+var new_value = $("#total-score").html()
+compare_values(new_value)
 }
-function compare_values() {
-
-}
-function win() {
-
-}
-function lose() {
-
-}
-
-
-
-
+function compare_values(new_value) {
+var random_number = $("#random-number").html()
+var wins =  $("#win-counter").html()
+if (new_value === random_number) {
+    $("#win-counter").html((wins*1)+1)
+    game.restart()
+}}
 
 
 
 $("#gem-1").on("click", function get_jewel_values() {
     var value = $("#gem-1").attr("value")
-    console.log(value)
+    add_jewel_values(value)
 })
 $("#gem-2").on("click", function get_jewel_values() {
     var value = $("#gem-2").attr("value")
-    console.log(value)
+    add_jewel_values(value)
 })
 $("#gem-3").on("click", function get_jewel_values() {
     var value = $("#gem-3").attr("value")
-    console.log(value)
+    add_jewel_values(value)
 })
 $("#gem-4").on("click", function get_jewel_values() {
     var value = $("#gem-4").attr("value")
-    console.log(value)
+    add_jewel_values(value)
 })
 game.start()
       });
