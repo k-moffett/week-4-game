@@ -11,31 +11,31 @@
 $( document ).ready(function () {
     
 var game = {
-    start: 
+    start:
         function start() {
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
             var random_gem_array = [1,2,3,4,5,6,7,8,9]
-            this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
+            random_number = random(random_number_array)            
             $("#gem-1").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-2").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-3").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-4").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
-            $("#random-number").html(this.random_number);
+            $("#random-number").html(random_number);
             $("#total-score").html(0);
             $("#win-counter").html(0);
             $("#loss-counter").html(0);
             $("#total-score").html(0);
-
-            
         },
+
+       
     restart:
         function restart() {
             console.log("restart was called")
             var random_number_array = [20,21,22,23,24,25,26,27,28,29,30,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
-            this.random_number = random_number_array[Math.floor(Math.random() * random_number_array.length)];
+            random_number = random(random_number_array)
             var random_gem_array = [1,2,3,4,5,6,7,8,9]
             $("#total-score").html(0);
-            $("#random-number").html(this.random_number);
+            $("#random-number").html(random_number);
             $("#gem-1").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-2").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
             $("#gem-3").attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)])
@@ -51,15 +51,13 @@ lose(new_value)
 }
 
 function lose(new_value){
-    console.log(new_value, "new value")
-    var random_number = $("#random-number").html()
-    var losses = $("#loss-counter").html()
-    console.log(random_number, "random")
-    console.log(losses, "losses")
-    if (new_value > random_number){
-        $("#loss-counter").html((losses*1)+1)
-        game.restart()
-    } else {
+var random_number = $("#random-number").html()
+var losses = $("#loss-counter").html()
+if (new_value > random_number) {
+    $("#loss-counter").html((losses*1)+1)
+    game.restart()
+    }
+    else{
         win(new_value)
     }
 }
@@ -71,9 +69,19 @@ if (new_value === random_number) {
     $("#win-counter").html((wins*1)+1)
     game.restart()
 }}
+//---------------------------------------------------------------------
+function set_value(){
+    var gem_ids = [$("#gem-1"), $("#gem-2"), $("#gem-3"),$("#gem-4")],
+for (i = 0; i < gem_ids.length; index++) {
+    [i].attr("value", random_gem_array[Math.floor(Math.random() * random_gem_array.length)]) 
+    console.log($("#gem-1"))  
+}}
 
-
-
+function random(array){
+   random_number = array[Math.floor(Math.random() * array.length)]
+   return random_number
+}
+//---------------------------------------------------------------------
 $("#gem-1").on("click", function get_jewel_values() {
     var value = $("#gem-1").attr("value")
     add_jewel_values(value)
