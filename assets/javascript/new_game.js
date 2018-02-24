@@ -45,24 +45,22 @@ $( document ).ready(function () {
 
     function compare() {
         if (game.total_score === game.random_number) {
-            $("#win-counter").html(game.wins+1);
+            game.wins+=1
+            $("#win-counter").html(game.wins);
             reset()
         }
         else if (game.total_score > game.random_number) {
-            $("#loss-counter").html(game.losses+1);
+            game.losses+=1
+            $("#loss-counter").html(game.losses);
             reset()
         } 
+        console.log(game.total_score, game.random_number, game.wins, "this is if")
+
     }
 function add(a,b){
     game.wins
 }
    
-
-
-
-
-
-
     $("#gem-1").on("click", function get_jewel_values() {
         var value = $("#gem-1").attr("value")
         add_jewel_values(value)
